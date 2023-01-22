@@ -28,5 +28,9 @@
 		public function eredmeny() {
 			return $this->eredmeny;
 		}
+
+		public function NEMH() {
+			return $this->eredmeny >= 20;
+		}
 	}
 ?>
