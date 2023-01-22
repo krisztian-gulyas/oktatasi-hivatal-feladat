@@ -1,5 +1,5 @@
 <?php
-	require './src/model/Targy'
+	require './src/model/Targy.php';
 	require './src/Felvetelizo.php';
 
 	/*\ START MAIN \*/
