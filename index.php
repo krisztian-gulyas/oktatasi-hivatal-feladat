@@ -14,6 +14,7 @@
 
 	$felvetelizok = array();
 	print("\$exampleDatas:<br>");
+	/*\ START INIT \*/
 	foreach ($list as $k => $v) {
 		$felvetelizok[$k] = (
 			(new App\Feladat\Felvetelizo(array("magyar nyelv és irodalom", "történelem", "matematika")))->Kovetelmeny(
@@ -48,5 +49,6 @@
 
 		print(($k == 3 ? "<br>\$my_exampleDatas:<br>" : "").$felvetelizok[$k]->Pont());
 	}
+	/*\ END INIT \*/
 	/*\ END MAIN \*/
 ?>
