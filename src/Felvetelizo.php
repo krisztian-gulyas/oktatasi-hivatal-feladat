@@ -51,15 +51,15 @@
 		}
 
 		private function Talalhato_e__kotelezo_targy() {
-			foreach ($this->kovetelmeny->Kotelezo_targy() as $key => $kt) {
+			foreach ($this->kovetelmeny->_kotelezo_targy() as $key => $kt) {
 				foreach ($this->erettsegi_targyak as $key => $et) {
-					if ($this->kovetelmeny->Description() == "PPKE BTK - Anglisztika") {
-						if ($kt == str_replace(' nyelv', '', $et->Nev()) && $et->Tipus() == "emelt") {
-							return $et->Eredmeny(); 
+					if ($this->kovetelmeny->description() == "PPKE BTK - Anglisztika") {
+						if ($kt == str_replace(' nyelv', '', $et->_nev()) && $et->_tipus() == "emelt") {
+							return $et->_eredmeny(); 
 						}
 					} else {
-						if ($kt == $et->Nev()) { 
-							return $et->Eredmeny(); 
+						if ($kt == $et->_nev()) { 
+							return $et->_eredmeny(); 
 						}
 					}
 				}
@@ -71,10 +71,10 @@
 			$tempInt = array(-1);
 			$i = 0;
 
-			foreach ($this->kovetelmeny->Kotelezoen_valaszthato_targy() as $key => $kvt) {
+			foreach ($this->kovetelmeny->_kotelezoen_valaszthato_targy() as $key => $kvt) {
 				foreach ($this->erettsegi_targyak as $key => $et) {
-					if ($kvt == $et->Nev()) { 
-						$tempInt[$i++] = $et->Eredmeny(); 
+					if ($kvt == $et->_nev()) { 
+						$tempInt[$i++] = $et->_eredmeny(); 
 					}
 				}
 			}
@@ -85,7 +85,7 @@
 			$o = 0;
 			foreach ($this->kotelezo_erettsegi_vizsga_targyak as $key => $kevt) {
 				foreach ($this->erettsegi_targyak as $key => $et) {
-					$o += ($et->Nev() == $kevt ? 1 : 0);
+					$o += ($et->_nev() == $kevt ? 1 : 0);
 				}
 			}
 			return (count($this->kotelezo_erettsegi_vizsga_targyak) == $o);
@@ -100,27 +100,27 @@
 				for ($i = 0; $i < $tpLength; $i++) { 
 					for ($o = 0; $o < $tpLength; $o++) { 
 						if ($i != $o) {
-							if ($this->tobbletpontok[$i]->Nyelv() == $this->tobbletpontok[$o]->Nyelv()) {
-								if ($this->tobbletpontok[$i]->NyelvTipus() == $this->tobbletpontok[$o]->NyelvTipus()) {
-									$arrayNyelv[$g++] = ($this->tobbletpontok[$o]->NyelvTipus() == "C1" ? 40 : 28);
+							if ($this->tobbletpontok[$i]->_nyelv() == $this->tobbletpontok[$o]->_nyelv()) {
+								if ($this->tobbletpontok[$i]->_tipus() == $this->tobbletpontok[$o]->_tipus()) {
+									$arrayNyelv[$g++] = ($this->tobbletpontok[$o]->_tipus() == "C1" ? 40 : 28);
 								} else {
 									$arrayNyelv[$g++] = (
-										(($this->tobbletpontok[$o]->NyelvTipus() == "C1" || $this->tobbletpontok[$i]->NyelvTipus() == "C1") ? 40 : 28)
+										(($this->tobbletpontok[$o]->_tipus() == "C1" || $this->tobbletpontok[$i]->_tipus() == "C1") ? 40 : 28)
 									);
 								}
 							} else {
-								$arrayNyelv[$g++] = ($this->tobbletpontok[$o]->NyelvTipus() == "C1" ? 40 : 28);
+								$arrayNyelv[$g++] = ($this->tobbletpontok[$o]->_tipus() == "C1" ? 40 : 28);
 							}
 						}
 					}
 				}
 			} elseif ($tpLength == 1) {
-				$arrayNyelv[0] = ($this->tobbletpontok[0]->NyelvTipus() == "C1" ? 40 : 28);
+				$arrayNyelv[0] = ($this->tobbletpontok[0]->_tipus() == "C1" ? 40 : 28);
 			}
 
 			$c = 0;
 			foreach ($this->erettsegi_targyak as $key => $value) {
-				if ($value->Tipus() == "emelt") {
+				if ($value->_tipus() == "emelt") {
 					$c++;
 				}
 			}
@@ -133,7 +133,7 @@
 		private function validErettsegiEredmeny() {
 			foreach ($this->erettsegi_targyak as $key => $et) {
 				if (!$et->NEMH()) {
-					return array(false, $et->Nev());
+					return array(false, $et->_nev());
 				}
 			}
 			return array(true);

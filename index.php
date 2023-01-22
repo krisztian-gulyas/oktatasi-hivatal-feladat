@@ -13,9 +13,10 @@
 	);
 
 	$felvetelizok = array();
+	print("\$exampleDatas:<br>");
 	foreach ($list as $k => $v) {
 		$felvetelizok[$k] = (
-			(new App\Feladat\Felvetelizo())->Kovetelmeny(
+			(new App\Feladat\Felvetelizo(array("magyar nyelv és irodalom", "történelem", "matematika")))->Kovetelmeny(
 				new App\Model\Kovetelmenyrendszer($v['valasztott-szak']['egyetem'], $v['valasztott-szak']['kar'], $v['valasztott-szak']['szak'])
 			));
 		
@@ -45,7 +46,7 @@
 			}
 		}
 
-		print($felvetelizok[$k]);
+		print(($k == 3 ? "<br>\$my_exampleDatas:<br>" : "").$felvetelizok[$k]->Pont());
 	}
 	/*\ END MAIN \*/
 ?>

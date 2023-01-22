@@ -8,7 +8,7 @@
 			return $this->kategoria;
 		}
 
-		public function _tpus() {
+		public function _tipus() {
 			return $this->tipus;
 		}
 
