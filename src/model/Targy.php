@@ -6,6 +6,7 @@
 
 		public function Nev($nev) {
 			$this->nev = $nev;
+			return $this;
 		}
 
 		public function nev() {
@@ -23,6 +24,7 @@
 
 		public function Eredmeny($eredmeny) {
 			$this->eredmeny = intval(str_replace('%', '', $eredmeny));
+			return $this;
 		}
 
 		public function eredmeny() {
