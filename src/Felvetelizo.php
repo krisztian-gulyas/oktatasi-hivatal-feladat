@@ -7,6 +7,7 @@
 
 		public function Kovetelmeny($kovetelmeny) {
 			$this->kovetelmeny = $kovetelmeny;
+			return $this;
 		}
 
 		public function _kovetelmeny() {
