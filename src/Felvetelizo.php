@@ -1,4 +1,54 @@
 <?php namespace App\Feladat;
+	/**
+	 * Felvetelizo
+	 * 	Főfolyamatokat elvégző osztály
+	 * 
+	 * 	Tárolja:
+	 *  	- 'kovetelmeny': Kovetelmenyrendszer
+	 * 		- 'erettsegi_targyak': array(Targy)
+	 * 		- 'tobbletpontok': array(Tobbletpont)
+	 * 		- 'kotelezo_erettsegi_vizsga_targyak': array(string)
+	 * 
+	 * 	Function:
+	 * 		- Setter
+	 *
+	 * 		- Talalhato_e__kotelezo_targy: int
+	 * 			Végig halad az érettségi tárgyakon és megvizsgélja, hogy megtalálható-e a keresett elem.
+	 * 			Ha igen akkor vissza adja az eredményét
+	 *
+	 * 		- Talalalhato_e__kotelezoen_valaszthato_targy: array
+	 * 			Végig halad az érettségi tárgyakon és megvizsgélja, hogy megtalálható-e a keresett elem.
+	 * 			Ezen elememeket kirakja egy 'temp' listába és visszatér vele.
+	 * 		
+	 *		- Talalalhato_e__kotelezo_erettsegi_vizsga_targy: bool
+	 * 			Végig halad az érettségi tárgyakon és megvizsgélja, hogy megtalálható-e a keresett elem.
+	 * 
+	 * 		- validErettsegiEredmeny: array(bool, string) | array(bool)
+	 * 			A kötelező érettségi vizsga tárgyakon végig haladva ellenörzi, hogy a minimum követelmények megfelel-e az eredmeny.
+	 * 			Ha igen, akkor egy array(bool: true|false) értékkel tér vissza.
+	 * 			Minden más esetben array(bool: true|false, string: targy_neve) érték jön vissza.
+	 * 
+	 * 		- Tobbletpont_szamitas(): int
+	 * 			Kiszámolja a többletpont értékét.
+	 * 			Elsőként a nyelveket vizsgálom meg, hogy van e közöttük azonos: 
+	 * 				- ha nincs, akkor mind két értéket felvezem.
+	 * 				- ha van, akkor további vizsgálat jön:
+	 * 					- megnézem, hogy azonos-e a két nyelv tipusa (C1 vagy B2):
+	 * 						- egyszer kerül felvitelre, ha azonos
+	 * 						- ha nem, akkor 'i' és az 'o' indexen lévő nyelvet levizsgálom, hogy melyik a 'C1'.
+	 * 						  Bár melyik is a 'C1', akkor a 40-et adja meg.
+	 * 			
+	 * 			Több tipus esetén bővíteni kell e function-t.
+	 * 
+	 * 		- Pont: void
+	 * 			A tényleges pontszámítás itt történik.
+	 * 			Levizsgálja:
+	 * 				, hogy az vizsga 'eredmény' 'x>=20', ha nem, akkor visszaadja a tárgy nevét, ami nem érte el a min szintet.
+	 * 				, hogy a 'kötelező érettségi vizsgatárgyak' meg vannak-e, ha nincs, akkor visszatér a hiba üzenettel.
+	 * 				, hogy a 'kötelező tárgy' és a 'kötelezően választhato tárgy' fellelhető-e a listán, ha vannak ilyenek, 
+	 * 					akkor visszatér az eredményeikkel.
+	 *			Ha minden feltétel jó, akkor kiszámolja a pontszámot, majd visszatér egy string-gel.
+	 */
 	class Felvetelizo {
 		private $kovetelmeny = null;
 		private $erettsegi_targyak = array();
@@ -30,7 +80,7 @@
 				return;
 			}
 
-			if (!$this->Talalalhato_e__kotelezo_erettsegi_vizsga_targy()) {
+			if (!$this->Talalalhato_e__kotelezo_erettsegi_vizsgatargy()) {
 				print("Hiba, nem lehetséges a pontszámítás a kötelező érettségi tárgyak hiánya miatt."."<br>");
 				return;
 			}
@@ -81,7 +131,7 @@
 			return max($tempInt);
 		}
 
-		private function Talalalhato_e__kotelezo_erettsegi_vizsga_targy() {
+		private function Talalalhato_e__kotelezo_erettsegi_vizsgatargy() {
 			$o = 0;
 			foreach ($this->kotelezo_erettsegi_vizsga_targyak as $key => $kevt) {
 				foreach ($this->erettsegi_targyak as $key => $et) {
