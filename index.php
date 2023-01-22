@@ -1,5 +1,6 @@
 <?php
 	require './src/model/Targy.php';
+	require './src/model/Kovetelmenyrendszer.php';
 	require './src/Felvetelizo.php';
 
 	/*\ START MAIN \*/
