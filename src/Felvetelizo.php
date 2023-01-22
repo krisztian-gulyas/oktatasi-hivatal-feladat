@@ -7,7 +7,6 @@
 
 		public function Kovetelmeny($kovetelmeny) {
 			$this->kovetelmeny = $kovetelmeny;
-			return $this;
 		}
 
 		public function _kovetelmeny() {
@@ -20,6 +19,10 @@
 
 		public function Tobbletpontok($index, $tobbletpont) {
 			$this->tobbletpontok[$index] = $tobbletpont;
+		}
+
+		public function __construct($kotelezo_erettsegi_vizsga_targyak) {
+			$this->kotelezo_erettsegi_vizsga_targyak = $kotelezo_erettsegi_vizsga_targyak;
 		}
 	}
 ?>
