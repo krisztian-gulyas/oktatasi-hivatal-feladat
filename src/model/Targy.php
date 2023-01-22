@@ -4,35 +4,26 @@
 		private $tipus = null;
 		private $eredmeny = 0;
 
-		public function Nev($nev) {
-			$this->nev = $nev;
-			return $this;
-		}
-
-		public function nev() {
+		public function _nev() {
 			return $this->nev;
 		}
 
-		public function Tiups($tipus) {
-			$this->tipus = $tipus;
-			return $this;
-		}
-
-		public function tipus() {
+		public function _tipus() {
 			return $this->tipus;
 		}
 
-		public function Eredmeny($eredmeny) {
-			$this->eredmeny = intval(str_replace('%', '', $eredmeny));
-			return $this;
-		}
-
-		public function eredmeny() {
+		public function _eredmeny() {
 			return $this->eredmeny;
 		}
 
 		public function NEMH() {
 			return $this->eredmeny >= 20;
+		}
+
+		public function __construct($nev, $tipus, $eredmeny) {
+			$this->nev = $nev;
+			$this->tipus = $tipus;
+			$this->eredmeny = intval(str_replace('%', '', $eredmeny));
 		}
 	}
 ?>

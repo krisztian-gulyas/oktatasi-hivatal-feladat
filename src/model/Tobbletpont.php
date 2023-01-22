@@ -4,31 +4,22 @@
 		private $tiups;
 		private $nyelv;
 
-		public function Kategoria($kategoria) {
-			$this->kategoria = $kategoria;
-			return $this;
-		}
-
-		public function kategoria() {
+		public function _kategoria() {
 			return $this->kategoria;
 		}
 
-		public function Tiups($tipus) {
-			$this->tipus = $tipus;
-			return $this;
-		}
-
-		public function tpus() {
+		public function _tpus() {
 			return $this->tipus;
 		}
 
-		public function Nyelv($nyelv) {
-			$this->nyelv = $nyelv;
-			return $this;
+		public function _nyelv() {
+			return $this->nyelv;
 		}
 
-		public function nyelv() {
-			return $this->nyelv;
+		public function __construct($kategoria, $tipus, $nyelv) {
+			$this->kategoria = $kategoria;
+			$this->tipus = $tipus;
+			$this->nyelv = $nyelv;
 		}
 	}
 ?>

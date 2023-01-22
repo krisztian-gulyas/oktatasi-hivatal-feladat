@@ -1,6 +1,6 @@
 <?php namespace App\Feladat;
 	class Felvetelizo {
-		private Kovetelmenyrendszer $kovetelmeny;
+		private $kovetelmeny = null;
 		private $erettsegi_targyak = array();
 		private $tobbletpontok = array();
 		private $kotelezo_erettsegi_vizsga_targyak = array();
@@ -10,7 +10,7 @@
 			return $this;
 		}
 
-		public function kovetelmeny() {
+		public function _kovetelmeny() {
 			return $this->kovetelmeny;
 		}
 

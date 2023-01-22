@@ -7,30 +7,15 @@
 		private $kotelezo_targy = array();
 		private $kotelezoen_valaszthato_targy = array();
 
-		public function Egyetem($egyetem) {
-			$this->egyetem = $egyetem;
-			return $this;
-		}
-
-		public function egyetem() {
+		public function _egyetem() {
 			return $this->egyetem;
 		}
 
-		public function Kar($kar) {
-			$this->kar = $kar;
-			return $this;
-		}
-
-		public function kar() {
+		public function _kar() {
 			return $this->kar;
 		}
 
-		public function Szak($szak) {
-			$this->szak = $szak;
-			return $this;
-		}
-
-		public function szak() {
+		public function _szak() {
 			return $this->szak;
 		}
 
@@ -43,7 +28,7 @@
 			return $this;
 		}
 
-		public function kotelezo_targy() {
+		public function _kotelezo_targy() {
 			return $this->kotelezo_targy;
 		}
 
@@ -52,8 +37,14 @@
 			return $this;
 		}
 
-		public function kotelezoen_valaszthato_targy() {
+		public function _kotelezoen_valaszthato_targy() {
 			return $this->kotelezoen_valaszthato_targy;
+		}
+
+		public function __construct($egyetem, $kar, $szak) {
+			$this->egyetem = $egyetem;
+			$this->kar = $kar;
+			$this->szak =$szak;
 		}
 	}
 ?>
