@@ -1,1 +1,1 @@
-# oktatasi-hivatal-feladat
+php == 8.2
