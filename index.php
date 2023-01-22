@@ -1,4 +1,6 @@
 <?php
+	require './homework_input.php';
+	
 	require './src/model/Targy.php';
 	require './src/model/Tobbletpont.php';
 	require './src/model/Kovetelmenyrendszer.php';
