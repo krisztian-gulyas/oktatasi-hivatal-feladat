@@ -14,7 +14,37 @@
 
 	$felvetelizok = array();
 	foreach ($list as $k => $v) {
-		$felvetelizok[$k] = new App\Feladat\Felvetelizo();
+		$felvetelizok[$k] = (
+			(new App\Feladat\Felvetelizo())->Kovetelmeny(
+				new App\Model\Kovetelmenyrendszer($v['valasztott-szak']['egyetem'], $v['valasztott-szak']['kar'], $v['valasztott-szak']['szak'])
+			));
+		
+		($felvetelizok[$k]->_kovetelmeny()
+			->Kotelezo_targy((
+				$felvetelizok[$k]->_kovetelmeny()->description() == "ELTE IK - Programtervező informatikus" ?
+				array("matematika") : array("angol")
+			))
+			->Kotelezoen_valaszthato_targy((
+				$felvetelizok[$k]->_kovetelmeny()->description() == "ELTE IK - Programtervező informatikus" ?
+				array("biológia", "fizika", "informatika", "kémia") : array("francia", "német", "olasz", "orosz", "spanyol", "történelem")
+			)));
+
+		if (count($v['erettsegi-eredmenyek']) > 0) {
+			foreach ($v['erettsegi-eredmenyek'] as $vk => $vv) {
+				$felvetelizok[$k]->Erettsegi_targyak($vk, 
+					new App\Model\Targy($vv['nev'], $vv['tipus'], $vv['eredmeny'])
+				);
+			}
+		}
+
+		if (count($v['tobbletpontok']) > 0) {
+			foreach ($v['tobbletpontok'] as $vk => $vv) {
+				$felvetelizok[$k]->Tobbletpontok($vk, 
+					new App\Model\Tobbletpont($vv['kategoria'], $vv['tipus'], $vv['nyelv'])
+				);
+			}
+		}
+
 		print($felvetelizok[$k]);
 	}
 	/*\ END MAIN \*/
