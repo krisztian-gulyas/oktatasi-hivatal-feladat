@@ -14,11 +14,12 @@
 	 *
 	 * 		- Talalhato_e__kotelezo_targy: int
 	 * 			Végig halad az érettségi tárgyakon és megvizsgélja, hogy megtalálható-e a keresett elem.
-	 * 			Ha igen akkor vissza adja az eredményét
+	 * 			Ha igen, akkor visszaadja az eredményét. Minden más esetben -1 a visszatérési érték.
 	 *
-	 * 		- Talalalhato_e__kotelezoen_valaszthato_targy: array
+	 * 		- Talalalhato_e__kotelezoen_valaszthato_targy: int
 	 * 			Végig halad az érettségi tárgyakon és megvizsgélja, hogy megtalálható-e a keresett elem.
-	 * 			Ezen elememeket kirakja egy 'temp' listába és visszatér vele.
+	 * 			Ezen elememeket kirakja egy 'temp' listába. Majd a legnagyobb értékkel tér vissza.
+         *                      Minden más esetben -1 a visszatérési érték.
 	 * 		
 	 *		- Talalalhato_e__kotelezo_erettsegi_vizsga_targy: bool
 	 * 			Végig halad az érettségi tárgyakon és megvizsgélja, hogy megtalálható-e a keresett elem.
@@ -40,7 +41,7 @@
 	 * 			
 	 * 			Több tipus esetén bővíteni kell e function-t.
 	 * 
-	 * 		- Pont: void
+	 * 		- Pont: string
 	 * 			A tényleges pontszámítás itt történik.
 	 * 			Levizsgálja:
 	 * 				, hogy az vizsga 'eredmény' 'x>=20', ha nem, akkor visszaadja a tárgy nevét, ami nem érte el a min szintet.
