@@ -1,6 +1,6 @@
 <?php
 	require './homework_input.php';
-	
+
 	require './src/model/Targy.php';
 	require './src/model/Tobbletpont.php';
 	require './src/model/Kovetelmenyrendszer.php';
@@ -14,7 +14,7 @@
 
 	$felvetelizok = array();
 	foreach ($list as $k => $v) {
-		$felvetelizok[$k] = new App\Feladat\Felvetelizo($v);
+		$felvetelizok[$k] = new App\Feladat\Felvetelizo();
 		print($felvetelizok[$k]);
 	}
 	/*\ END MAIN \*/
