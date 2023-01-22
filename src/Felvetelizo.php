@@ -10,14 +10,16 @@
 			return $this;
 		}
 
-		public function Erettsegi_targyak($erettsegi_targyak) {
-			$this->erettsegi_targyak = $erettsegi_targyak;
-			return $this;
+		public function kovetelmeny() {
+			return $this->kovetelmeny;
 		}
 
-		public function Tobbletpontok($tobbletpontok) {
-			$this->tobbletpontok = $tobbletpontok;
-			return $this;
+		public function Erettsegi_targyak($index, $erettsegi_targy) {
+			$this->erettsegi_targyak[$index] = $erettsegi_targy;
+		}
+
+		public function Tobbletpontok($index, $tobbletpont) {
+			$this->tobbletpontok[$index] = $tobbletpont;
 		}
 	}
 ?>
